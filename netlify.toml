@@ -1,6 +1,3 @@
-[build]
-  publish = "out"  # or your build directory
-
 # Form submission settings
 [[forms]]
   name = "newsletter-subscription"
