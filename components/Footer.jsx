@@ -12,50 +12,48 @@ export default function AgentsifyFooter() {
     const { t, i18n } = useTranslation('common');
     const router = useRouter();
 
-    const handleSubscribe = async (e) => {
-        e.preventDefault();
-        if (!email) return;
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    setIsLoading(true);
+
+    try {
+        // Method 1: Direct form submission (recommended)
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                'form-name': 'newsletter-subscription',
+                'subject': 'Newsletter Subscription',
+                'greeting': 'Hi, I hope you are doing well.',
+                'message': 'A new user has subscribed to the Agentsify AI newsletter!',
+                'email': email,
+                'closing': 'Thanks & Regards'
+            }).toString()
+        });
+
+        if (response.ok) {
+            setIsSubscribed(true);
+            setEmail('');
+            setTimeout(() => setIsSubscribed(false), 3000);
+        } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        setIsLoading(true);
-
-        try {
-            // Create form data with all the fields you want in your email
-            const formData = new FormData();
-            formData.append('form-name', 'newsletter-subscription');
-            formData.append('subject', 'Newsletter Subscription');
-            formData.append('greeting', 'Hi, I hope you are doing well.');
-            formData.append('message', 'A new user has subscribed to the Agentsify AI newsletter!');
-            formData.append('email', email);
-            formData.append('closing', 'Thanks & Regards');
-
-            // Submit to the root path, not /__forms.html
-            const response = await fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            });
-
-            if (response.ok) {
-                setIsSubscribed(true);
-                setEmail('');
-                setTimeout(() => setIsSubscribed(false), 3000);
-            } else {
-                throw new Error('Subscription failed');
-            }
-        } catch (err) {
-            alert('Subscription failed. Please try again later.');
-            console.error(err);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
+    } catch (err) {
+        console.error('Submission error:', err);
+        alert('Subscription failed. Please try again later.');
+    } finally {
+        setIsLoading(false);
+    }
+};
+    
     const getLocalizedPath = (path) => {
         const currentLang = i18n.language?.toLowerCase() || 'en';
         const isUkrainian = currentLang.includes('ua') || currentLang.includes('uk');
@@ -105,13 +103,8 @@ export default function AgentsifyFooter() {
                                             name="newsletter-subscription"
                                             onSubmit={handleSubscribe}
                                             className="space-y-2"
-                                            data-netlify="true"
                                         >
                                             <input type="hidden" name="form-name" value="newsletter-subscription" />
-                                            <input type="hidden" name="subject" value="Newsletter Subscription" />
-                                            <input type="hidden" name="greeting" value="Hi, I hope you are doing well." />
-                                            <input type="hidden" name="message" value="A new user has subscribed to the Agentsify AI newsletter!" />
-                                            <input type="hidden" name="closing" value="Thanks & Regards" />
                                             <div className="relative">
                                                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400" />
                                                 <input
