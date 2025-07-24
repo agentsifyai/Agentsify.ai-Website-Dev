@@ -84,6 +84,7 @@ const ContactUs = () => {
       const params = new URLSearchParams();
       params.append('form-name', 'contact-us');  // form name MUST match form attribute name!
       params.append('Message', formattedMessage);
+      params.append('bot-field', '');
 
       const response = await fetch('/', {  // Netlify listens on root for form submissions
         method: 'POST',
