@@ -4,7 +4,7 @@ A modern web application built with [Next.js](https://nextjs.org/) and [React](h
 Easily scalable, SEO-optimized, and production-ready.
 
 
-## 📦 Tech Stack
+## Tech Stack
 
 - **Framework:** Next.js (React + SSR)
 - **Styling:** Tailwind CSS / CSS Modules
@@ -12,7 +12,7 @@ Easily scalable, SEO-optimized, and production-ready.
 - **Deployment:** Netlify
 
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 /project-root
@@ -30,7 +30,7 @@ Easily scalable, SEO-optimized, and production-ready.
 └── README.md             # Project documentation
 ```
 
-##  💻 Run your Project Locally
+##  Run your Project Locally
 
 ### 1. Clone the repo
 ```bash
@@ -53,7 +53,7 @@ npm run dev
 Visit http://localhost:3000 to view it in your browser.
 
 
-##  🌐 Netlify Deployment
+##  Netlify Deployment
 
 ### 1️. Create a New GitHub Repository
 
@@ -102,5 +102,5 @@ Before deploying, you need to add your required environment variables:
 This project uses a Netlify Forms Function by default to send emails via the Resend API. You don’t need to configure anything else — just ensure the environment variable is set.
 This is the API Link,[https://docs.netlify.com/manage/forms/setup/]
 
-## 📄 License
+## License
 © 2025 Agentsify AI. All rights reserved.
