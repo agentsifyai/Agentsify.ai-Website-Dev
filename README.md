@@ -14,20 +14,20 @@ Easily scalable, SEO-optimized, and production-ready.
 
 ## 📁 Project Structure
 
-```bash
+```
 /project-root
-├── components/ # All Homepage Components
-├── netlify/functions/ # Netlify serverless function handlers (e.g., for email)
-├── pages/ # All Tabs of Navbar such as Services, Contact, etc.
-├── public/ # All Images used in the web application
-├── styles/ # All CSS files
-├── netlify.toml # Netlify build and redirect settings  
-├── next.config.js # Next.js configuration file
-├── package.json # Project metadata and dependencies
-├── postcss.config.js # PostCSS config for Tailwind CSS
-├── tailwind.config.js # Tailwind CSS configuration
-├── variants.js # Animation/styling variants (e.g., for Framer Motion)
-└── README.md # Project documentation
+├── components/           # All Homepage Components
+├── netlify/functions/    # Netlify serverless function handlers (e.g., for email)
+├── pages/                # All Tabs of Navbar such as Services, Contact, etc.
+├── public/               # All Images used in the web application
+├── styles/               # All CSS files
+├── netlify.toml          # Netlify build and redirect settings  
+├── next.config.js        # Next.js configuration file
+├── package.json          # Project metadata and dependencies
+├── postcss.config.js     # PostCSS config for Tailwind CSS
+├── tailwind.config.js    # Tailwind CSS configuration
+├── variants.js           # Animation/styling variants (e.g., for Framer Motion)
+└── README.md             # Project documentation
 ```
 
 ##  💻 Run your Project Locally
